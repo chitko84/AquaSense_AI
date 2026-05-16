@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-gray-900 antialiased;
+  }
+}
+
+/* Custom Leaflet Styles */
+.leaflet-container {
+  cursor: crosshair !important;
+}
+.leaflet-bar {
+  border: none !important;
+  box-shadow: none !important;
+}
+.leaflet-popup-content-wrapper {
+  background: white !important;
+  border-radius: 1.5rem !important;
+  padding: 8px !important;
+  border: 2px solid #0f172a !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+.leaflet-popup-tip {
+  background: #0f172a !important;
+}
+.leaflet-div-icon, .custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+}

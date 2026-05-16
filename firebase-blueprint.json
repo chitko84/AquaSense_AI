@@ -1,0 +1,175 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "System user with role-based access",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin", "verified_responder"] },
+        "phone": { "type": "string" },
+        "location": { "type": "string" },
+        "trustScore": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "FloodReport": {
+      "title": "Flood Report",
+      "description": "Crowdsourced flood incidence report",
+      "type": "object",
+      "properties": {
+        "reportId": { "type": "string" },
+        "userId": { "type": "string" },
+        "locationName": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "reportType": { "type": "string" },
+        "severity": { "type": "string", "enum": ["Low", "Medium", "High", "Critical"] },
+        "waterLevelEstimate": { "type": "string" },
+        "description": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "aiPhotoAnalysis": { "type": "object" },
+        "emergencyHelpNeeded": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["Pending", "Verified", "Rejected", "Resolved"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "verifiedBy": { "type": "string" },
+        "verifiedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Shelter": {
+      "title": "Shelter",
+      "description": "Evacuation center details",
+      "type": "object",
+      "properties": {
+        "shelterId": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "totalCapacity": { "type": "number" },
+        "currentOccupancy": { "type": "number" },
+        "availableSpace": { "type": "number" },
+        "status": { "type": "string" },
+        "facilities": { "type": "array", "items": { "type": "string" } },
+        "contactNumber": { "type": "string" },
+        "routeRisk": { "type": "string" },
+        "lastUpdated": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Alert": {
+      "title": "Alert",
+      "description": "Broadcast emergency alert",
+      "type": "object",
+      "properties": {
+        "alertId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "riskLevel": { "type": "string" },
+        "locationName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string" },
+        "active": { "type": "boolean" }
+      }
+    },
+    "FamilyCheckIn": {
+      "title": "Family Check-In",
+      "description": "Real-time safety status for family groups",
+      "type": "object",
+      "properties": {
+        "checkInId": { "type": "string" },
+        "userId": { "type": "string" },
+        "groupId": { "type": "string" },
+        "status": { "type": "string" },
+        "message": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "RiskPrediction": {
+      "title": "Risk Prediction",
+      "description": "AI-generated flood risk prediction",
+      "type": "object",
+      "properties": {
+        "predictionId": { "type": "string" },
+        "locationName": { "type": "string" },
+        "inputData": { "type": "object" },
+        "modelResult": { "type": "object" },
+        "aiExplanation": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "PostFloodImpactReport": {
+      "title": "Post-Flood Impact Report",
+      "description": "Post-flood damage assessment",
+      "type": "object",
+      "properties": {
+        "impactReportId": { "type": "string" },
+        "relatedIncidentId": { "type": "string" },
+        "locationName": { "type": "string" },
+        "state": { "type": "string" },
+        "district": { "type": "string" },
+        "floodDate": { "type": "string" },
+        "reportedBy": { "type": "string" },
+        "affectedHouseholds": { "type": "number" },
+        "affectedPeople": { "type": "number" },
+        "injuriesReported": { "type": "number" },
+        "evacuationNeeded": { "type": "boolean" },
+        "peopleMovedToShelter": { "type": "number" },
+        "housesAffected": { "type": "number" },
+        "vehiclesAffected": { "type": "number" },
+        "businessPremisesAffected": { "type": "number" },
+        "agricultureAffected": { "type": "number" },
+        "publicInfrastructureAffected": { "type": "string" },
+        "estimatedDamageCategory": { "type": "string", "enum": ["Low", "Medium", "High", "Severe"] },
+        "roadsBlocked": { "type": "boolean" },
+        "affectedRoadNames": { "type": "string" },
+        "bridgeDamage": { "type": "boolean" },
+        "publicTransportDisruption": { "type": "boolean" },
+        "shelterUsed": { "type": "string" },
+        "shelterOccupancyDuringFlood": { "type": "number" },
+        "foodWaterSupplyIssue": { "type": "boolean" },
+        "medicalAssistanceNeeded": { "type": "boolean" },
+        "recoveryNeeds": { "type": "array", "items": { "type": "string" } },
+        "impactSummary": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["Draft", "Submitted", "Reviewed", "Archived"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile data"
+    },
+    "/floodReports/{reportId}": {
+      "schema": "FloodReport",
+      "description": "Community flood reports"
+    },
+    "/shelters/{shelterId}": {
+      "schema": "Shelter",
+      "description": "Evacuation shelters"
+    },
+    "/alerts/{alertId}": {
+      "schema": "Alert",
+      "description": "Emergency alerts"
+    },
+    "/familyCheckIns/{checkInId}": {
+      "schema": "FamilyCheckIn",
+      "description": "Family safety check-ins"
+    },
+    "/riskPredictions/{predictionId}": {
+      "schema": "RiskPrediction",
+      "description": "AI predictions"
+    },
+    "/postFloodImpactReports/{reportId}": {
+      "schema": "PostFloodImpactReport",
+      "description": "Post-flood impact assessments"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "AquaSense AI",
+  "description": "Smart Flood Management System with AI-powered analytics, real-time community reporting, and Firebase integration readiness for mission-critical reliability.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
